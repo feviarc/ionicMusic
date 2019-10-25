@@ -1,5 +1,8 @@
 {
   "name": "ionic-music",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }
