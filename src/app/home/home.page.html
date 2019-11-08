@@ -1,43 +1,13 @@
 <ion-content padding>
-  <ion-slides pager="true">
+  <ion-slides pager="true" [options]="slideOpts">
 
-    <ion-slide>
+    <ion-slide *ngFor="let slide of slides">
       <ion-icon name="close"></ion-icon>
           <img src="assets/img/logo.png" alt="Logo OITSYS">
-          <h1>Escucha tu música</h1>
-          <h2>en cualquier lugar</h2>
-          <p>
-            Los mejores álbumes, las mejores canciones. Escucha y comparte 
-            en cualquier momento, todas horas.
-          </p>
+          <h1>{{ slide.title }}</h1>
+          <p>{{ slide.description }}</p>
           <ion-icon name="play"></ion-icon>
       </ion-slide>
-
-    <ion-slide>
-        <ion-icon name="close"></ion-icon>
-        <br>
-        <img src="assets/img/logo.png" alt="Logo OITSYS">
-        <h1>Escucha tu música</h1>
-        <h2>en cualquier lugar</h2>
-        <p>
-          Los mejores álbumes, las mejores canciones. Escucha y comparte 
-          en cualquier momento, todas horas.
-        </p>
-        <ion-icon name="play"></ion-icon>
-      </ion-slide>
-
-      <ion-slide>
-          <ion-icon name="close"></ion-icon>
-          <br>
-          <img src="assets/img/logo.png" alt="Logo OITSYS">
-          <h1>Escucha tu música</h1>
-          <h2>en cualquier lugar</h2>
-          <p>
-            Los mejores álbumes, las mejores canciones. Escucha y comparte 
-            en cualquier momento, todas horas.
-          </p>
-          <ion-icon name="play"></ion-icon>
-        </ion-slide>
-
-  </ion-slides>
+  
+    </ion-slides>
 </ion-content>
