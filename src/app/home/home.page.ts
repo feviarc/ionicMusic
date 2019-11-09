@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { slidesCoverflow, slidesCube, slidesFlip } from './slides-animations';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -10,40 +11,16 @@ import { slidesCoverflow, slidesCube, slidesFlip } from './slides-animations';
 
 
 export class HomePage {
-  slides: any;
-  slideOpts: any;
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private storage: Storage
+  ) { }
 
-    // this.slideOpts = slidesCoverflow;
-    this.slideOpts = slidesCube;
-    // this.slideOpts = slidesFlip;
 
-    this.slides = [
-      {
-        title: 'Listen your favorite music',
-        description:
-          'Los mejores álbums y canciones. Escucha y comparte en cualquier momento a todas horas.',
-        icon: 'play'
-      },
-      {
-        title: 'Listen your favorite music',
-        description:
-          'Los mejores álbums y canciones. Escucha y comparte en cualquier momento a todas horas.',
-        icon: 'play'
-      },
-      {
-        title: 'Listen your favorite music',
-        description:
-          'Los mejores álbums y canciones. Escucha y comparte en cualquier momento a todas horas.',
-        icon: 'play'
-      },
-      {
-        title: 'Listen your favorite music',
-        description:
-          'Los mejores álbums y canciones. Escucha y comparte en cualquier momento a todas horas.',
-        icon: 'play'
-      }
-    ];
+  openIntro() {
+    this.storage.set('isIntroTurnOff', false);
+    this.router.navigateByUrl('/intro');
   }
+
 }

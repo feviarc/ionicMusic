@@ -1,0 +1,51 @@
+ion-slides {
+  background-color: white;
+  height: 92%;
+  max-width: 800px;
+}
+  
+ion-slide > h1, h2 {
+  color: var(--ion-color-primary);
+  font-family: 
+    -apple-system, 
+    system-ui,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Ubuntu,
+    Arial,
+    sans-serif;
+    font-weight: bolder;
+  margin: 0 0 0 0;
+}
+  
+ion-slide > img {
+  margin: 42px auto;
+  width: 100%;
+}
+
+ion-slide > p {
+  color: #666666;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-style: oblique;
+  padding: 1em 1em 1em 1em;
+}
+
+ion-slide > ion-icon {
+  color: var(--ion-color-success);
+  font-size: 48px;
+}
+  
+ion-slide > ion-icon[name="close"] {
+  color: var(--ion-color-primary);
+  float: right;
+  font-size: 48px;
+}
+ 
+.swiper-slide {
+  display: block;
+  margin-bottom: 64px;
+  background-color: white;
+}

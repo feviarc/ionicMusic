@@ -1,13 +1,5 @@
-<ion-content padding>
-  <ion-slides pager="true" [options]="slideOpts">
+<ion-content class="ion-padding">
 
-    <ion-slide *ngFor="let slide of slides">
-      <ion-icon name="close"></ion-icon>
-          <img src="assets/img/logo.png" alt="Logo OITSYS">
-          <h1>{{ slide.title }}</h1>
-          <p>{{ slide.description }}</p>
-          <ion-icon name="play"></ion-icon>
-      </ion-slide>
+  <ion-button (click)="openIntro()">Intro</ion-button>
   
-    </ion-slides>
 </ion-content>
