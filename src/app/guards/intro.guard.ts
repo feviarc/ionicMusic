@@ -8,8 +8,8 @@ import {
   Router
 } from '@angular/router';
 
-import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs';
 
 
 @Injectable({

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { slidesCoverflow, slidesCube, slidesFlip } from './slides-animations';
 
+
 @Component({
   selector: 'app-intro',
   templateUrl: './intro.page.html',
@@ -49,8 +50,11 @@ export class IntroPage implements OnInit {
 
 
   closeIntro() {
-    this.storage.set('isIntroTurnOff', true);
-    this.router.navigateByUrl('/home');
+    this.storage.set('isIntroTurnOff', true).then(
+      () => {
+        this.router.navigateByUrl('/home');
+      }
+    );
   }
 
 }

@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [IntroGuard] },
-  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule'}
+  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
 ];
 
 

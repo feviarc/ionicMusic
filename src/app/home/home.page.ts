@@ -19,8 +19,11 @@ export class HomePage {
 
 
   openIntro() {
-    this.storage.set('isIntroTurnOff', false);
-    this.router.navigateByUrl('/intro');
+    this.storage.set('isIntroTurnOff', false).then(
+      () => {
+        this.router.navigateByUrl('/intro');
+      }
+    );
   }
 
 }
