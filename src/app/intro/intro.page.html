@@ -2,7 +2,7 @@
 
   <ion-slides pager="true" [options]="slideOpts" (ionSlideReachEnd)="closeIntro()">
     <ion-slide *ngFor="let slide of slides">
-        <img src="assets/img/logo.png" alt="Logo OITSYS">
+        <img src="assets/img/logo.png">
         <h1>{{ slide.title }}</h1>
         <p>{{ slide.description }}</p>
         <ion-icon name="play"></ion-icon>
