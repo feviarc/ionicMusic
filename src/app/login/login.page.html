@@ -4,7 +4,7 @@
 
   <form 
     [formGroup]="loginForm"
-    (ngSubmit)="loginUser(loginForm.value)"
+    (ngSubmit)="login(loginForm.value)"
   >
     <ion-item>
       <ion-label>Email</ion-label>
@@ -31,6 +31,8 @@
     >
       {{ validatorWarnings.password }}
     </small>
+
+    <small>{{ errorMessage }}</small>
 
     <ion-button *ngIf="loginForm.valid"
       class="ion-margin-top" 

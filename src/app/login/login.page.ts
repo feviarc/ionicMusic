@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
+import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -11,11 +14,19 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 export class LoginPage implements OnInit {
 
+  errorMessage: string;
   loginForm: FormGroup;
   validatorWarnings: any;
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private navCtrl: NavController,
+    private authService: AuthService
+  ) {
+
+    this.errorMessage = '';
+
     const validator = {
       email: [
         Validators.required,
@@ -42,8 +53,18 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
 
-  loginUser(credentials) {
-    console.log(credentials);
+  login(credentials) {
+    this.authService.login(credentials)
+    .then(
+      (res) => {
+        this.navCtrl.navigateForward('/home');
+      }
+    )
+    .catch(
+      (error) => {
+        this.errorMessage = error;
+      }
+    );
   }
 
 }
