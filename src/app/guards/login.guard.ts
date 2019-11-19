@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 })
 
 
-export class IntroGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
 
   constructor(
     private router: Router,
@@ -25,11 +25,11 @@ export class IntroGuard implements CanActivate {
   ) { }
 
   async canActivate() {
-    const isIntroTurnOff = await this.storage.get('isIntroTurnOff');
-    if (isIntroTurnOff) {
+    const isUserLoggedIn = await this.storage.get('isUserLoggedIn');
+    if (isUserLoggedIn) {
       return true;
     } else {
-      this.router.navigateByUrl('/intro');
+      this.router.navigateByUrl('/login');
     }
   }
 
