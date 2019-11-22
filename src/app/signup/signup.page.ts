@@ -13,16 +13,16 @@ import { AuthService } from '../services/auth.service';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.page.html',
+  styleUrls: ['./signup.page.scss'],
 })
 
 
-export class LoginPage {
+export class SignupPage {
 
   errorMessage: string;
-  loginForm: FormGroup;
+  signupForm: FormGroup;
   validationWarning: any;
 
 
@@ -32,7 +32,6 @@ export class LoginPage {
     private storage: Storage,
     private authService: AuthService
   ) {
-
     this.errorMessage = '';
 
     const validator = {
@@ -51,31 +50,28 @@ export class LoginPage {
       password: 'This field must have at least 8 characters'
     };
 
-    this.loginForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
+      firstName: new FormControl(),
+      middleName: new FormControl(),
+      lastName: new FormControl(),
       email: new FormControl('', Validators.compose(validator.email)),
       password: new FormControl('', Validators.compose(validator.password))
     });
   }
 
 
-  login(credentials) {
-    this.authService.login(credentials)
-    .then(
-      (res) => {
-        this.storage.set('isUserLoggedIn', true);
-        this.navCtrl.navigateForward('/home');
-      }
-    )
-    .catch(
-      (error) => {
-        this.errorMessage = error;
-      }
-    );
+  goToLoginPage() {
+    this.navCtrl.navigateBack('/login');
   }
 
 
-  goToSignUpPage() {
-    this.navCtrl.navigateForward('/signup');
+  signup(signupData) {
+    signupData.password = btoa(signupData.password);
+    this.authService.registerUser(signupData).then(
+      () => {
+        this.navCtrl.navigateBack('/login');
+      }
+    );
   }
 
 }

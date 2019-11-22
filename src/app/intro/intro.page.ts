@@ -1,7 +1,18 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
+
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { slidesCoverflow, slidesCube, slidesFlip } from './slides-animations';
+
+import {
+  slidesCoverflow,
+  slidesCube,
+  slidesFlip
+} from './slides-animations';
 
 
 @Component({
@@ -11,7 +22,7 @@ import { slidesCoverflow, slidesCube, slidesFlip } from './slides-animations';
 })
 
 
-export class IntroPage implements OnInit {
+export class IntroPage {
 
   slides: any;
   slideOpts: any;
@@ -30,23 +41,20 @@ export class IntroPage implements OnInit {
       {
         title: 'Listen your favorite music',
         description: 'Los mejores álbums y canciones. Escucha y comparte en cualquier momento a todas horas.',
-        icon: 'play'
+        icon: 'at'
       },
       {
         title: 'Listen your favorite music',
         description: 'Los mejores álbums y canciones. Escucha y comparte en cualquier momento a todas horas.',
-        icon: 'play'
+        icon: 'globe'
       },
       {
         title: 'Listen your favorite music',
         description: 'Los mejores álbums y canciones. Escucha y comparte en cualquier momento a todas horas.',
-        icon: 'play'
+        icon: 'cloud-download'
       }
     ];
   }
-
-
-  ngOnInit() { }
 
 
   closeIntro() {

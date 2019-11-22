@@ -16,7 +16,7 @@
              loginForm.get('email').dirty && 
              loginForm.get('email').hasError('pattern')"
     >
-      {{ validatorWarnings.email }}
+      {{ validationWarning.email }}
     </small>
   
     <ion-item>
@@ -29,7 +29,7 @@
              loginForm.get('password').dirty && 
              loginForm.get('password').hasError('minlength')"
     >
-      {{ validatorWarnings.password }}
+      {{ validationWarning.password }}
     </small>
 
     <small>{{ errorMessage }}</small>
@@ -54,6 +54,7 @@
     fill="outline"
     shape="round"
     size="large"
+    (click)="goToSignUpPage()"
   >
     Sign up
   </ion-button>
