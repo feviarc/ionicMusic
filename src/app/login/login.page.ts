@@ -63,7 +63,7 @@ export class LoginPage {
     .then(
       (res) => {
         this.storage.set('isUserLoggedIn', true);
-        this.navCtrl.navigateForward('/home');
+        this.navCtrl.navigateForward('/menu/home');
       }
     )
     .catch(

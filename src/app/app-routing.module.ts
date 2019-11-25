@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 import { IntroGuard } from './guards/intro.guard';
 import { LoginGuard } from './guards/login.guard';
 
@@ -8,16 +7,8 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'menu/home',
     pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule',
-    canActivate: [
-      LoginGuard,
-      IntroGuard
-    ]
   },
   {
     path: 'intro',
@@ -27,7 +18,18 @@ const routes: Routes = [
     path: 'login',
     loadChildren: './login/login.module#LoginPageModule'
   },
-  { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' }
+  {
+    path: 'signup',
+    loadChildren: './signup/signup.module#SignupPageModule'
+  },
+  {
+    path: 'menu',
+    loadChildren: './menu/menu.module#MenuPageModule',
+    canActivate: [
+      LoginGuard,
+      IntroGuard
+    ]
+  }
 ];
 
 

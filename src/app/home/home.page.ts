@@ -18,15 +18,6 @@ export class HomePage {
   ) { }
 
 
-  logout() {
-    this.storage.set('isUserLoggedIn', false).then(
-      () => {
-        this.router.navigateByUrl('/login');
-      }
-    );
-  }
-
-
   openIntro() {
     this.storage.set('isIntroTurnOff', false).then(
       () => {

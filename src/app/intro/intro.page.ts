@@ -60,7 +60,7 @@ export class IntroPage {
   closeIntro() {
     this.storage.set('isIntroTurnOff', true).then(
       () => {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/menu/home');
       }
     );
   }
