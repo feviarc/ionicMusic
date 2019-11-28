@@ -6,7 +6,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-<span>HomePage</span>
-  
+<ion-content>
+<h1 class="ion-padding">Artistas</h1>
+<ion-slides [options]="slideOpts" *ngIf="artists.length"> 
+  <ion-slide *ngFor="let artist of artists">
+    <ion-avatar>
+      <img src="https://via.placeholder.com/150">
+      <small>Nombre del Artista</small>
+    </ion-avatar>
+  </ion-slide>
+</ion-slides>
+
+<h2 class="ion-padding">Albums</h2>
+<ion-slides [options]="slideOpts" *ngIf="artists.length"> 
+  <ion-slide *ngFor="let artist of artists">
+    <ion-avatar>
+      <img src="https://via.placeholder.com/150">
+      <small>Nombre del Artista</small>
+    </ion-avatar>
+  </ion-slide>
+</ion-slides>
+
+<h2 class="ion-padding">Canciones</h2>
+<ion-slides [options]="slideOpts" *ngIf="artists.length"> 
+  <ion-slide *ngFor="let artist of artists">
+    <ion-avatar>
+      <img src="https://via.placeholder.com/150">
+      <small>Nombre del Artista</small>
+    </ion-avatar>
+  </ion-slide>
+</ion-slides>
+
 </ion-content>
