@@ -29,7 +29,8 @@ const routes: Routes = [
       LoginGuard,
       IntroGuard
     ]
-  }
+  },
+  { path: 'songs-modal', loadChildren: './songs-modal/songs-modal.module#SongsModalPageModule' }
 ];
 
 
