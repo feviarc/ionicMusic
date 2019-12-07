@@ -17,6 +17,9 @@ export class HomePage {
 
   albums: any[];
   artists: any[];
+  currentSong: HTMLAudioElement;
+  elapsedTime: number;
+  isSongPlaying: boolean;
   slideOpts: any;
   song: any;
   songs: any[];
@@ -28,8 +31,8 @@ export class HomePage {
     private storage: Storage,
     private musicService: MusicService
   ) {
-    this.artists = [];
     this.albums = [];
+    this.artists = [];
     this.song = {};
     this.songs = [];
 
@@ -37,8 +40,23 @@ export class HomePage {
       initialSlide: 2,
       slidesPerView: 4,
       centeredSlides: true,
-      speed: 300
+      speed: 350
     };
+
+    this.currentSong = new Audio();
+
+    this.currentSong.addEventListener('ended',
+      () => {
+        this.isSongPlaying = false;
+      }
+    );
+
+    this.currentSong.addEventListener('timeupdate',
+      () => {
+        this.elapsedTime = (1 / this.currentSong.duration) * this.currentSong.currentTime;
+        console.log(this.currentSong.currentTime);
+      }
+    );
   }
 
 
@@ -47,17 +65,16 @@ export class HomePage {
       (newReleases) => {
 
         this.artists = this.musicService.getArtists();
-        console.log(this.artists);
-
-        this.songs = newReleases.albums.items.filter(
-          (e) => {
-            return e.album_type === 'single';
-          }
-        );
 
         this.albums = newReleases.albums.items.filter(
           (e) => {
             return e.album_type === 'album';
+          }
+        );
+
+        this.songs = newReleases.albums.items.filter(
+          (e) => {
+            return e.album_type === 'single';
           }
         );
       }
@@ -76,11 +93,46 @@ export class HomePage {
 
     modal.onDidDismiss().then(
       (selectedSong) => {
-        this.song = selectedSong.data;
+        if (selectedSong.data) {
+          this.song = selectedSong.data;
+          this.currentSong.src = this.song.preview_url;
+          this.currentSong.play();
+          this.isSongPlaying = true;
+        }
       }
     );
 
     return await modal.present();
+  }
+
+
+  parseTime(timeInSeconds) {
+    let minutes;
+    let seconds;
+
+    if (timeInSeconds) {
+      minutes = Math.floor(timeInSeconds / 60).toString();
+      minutes = minutes.length === 1 ? '0' + minutes : minutes;
+      seconds =  parseInt((timeInSeconds % 60).toString(), 10).toString();
+      seconds = seconds.length === 1 ? '0' + seconds : seconds;
+    } else {
+      minutes = '00';
+      seconds = '00';
+    }
+
+    return `${minutes}:${seconds}`;
+  }
+
+
+  pause() {
+    this.currentSong.pause();
+    this.isSongPlaying = false;
+  }
+
+
+  play() {
+    this.currentSong.play();
+    this.isSongPlaying = true;
   }
 
 }

@@ -42,11 +42,38 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="song.name || isSongPlaying">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-start"><small>{{ parseTime(currentSong.currentTime) }}</small></ion-col>
+      <ion-col class="ion-text-end"><small>{{ parseTime(currentSong.duration) }}</small></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-progress-bar [value]="elapsedTime"></ion-progress-bar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1">
+        <ion-icon name="heart" ></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-text>
+          {{ song.name }}
+        </ion-text>
+      </ion-col>
+      <ion-col size="1">
+        <ion-icon name="play" (click)="play()" *ngIf="!isSongPlaying"></ion-icon>
+        <ion-icon name="pause" (click)="pause()" *ngIf="isSongPlaying"></ion-icon>
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+</ion-footer>
+
+
+<!-- <ion-footer>
   <ion-text color="danger" *ngIf="!song.name">
     <small>Waiting for a song...</small>
   </ion-text>
   <ion-text color="primary" *ngIf="song.name">
     <small>{{ song.name }}</small>
   </ion-text>
-</ion-footer>
+</ion-footer> -->
