@@ -7,7 +7,7 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'menu/home',
+    redirectTo: 'menu',
     pathMatch: 'full'
   },
   {
@@ -30,7 +30,10 @@ const routes: Routes = [
       IntroGuard
     ]
   },
-  { path: 'songs-modal', loadChildren: './songs-modal/songs-modal.module#SongsModalPageModule' }
+  {
+    path: 'songs-modal',
+    loadChildren: './songs-modal/songs-modal.module#SongsModalPageModule'
+  }
 ];
 
 

@@ -13,9 +13,9 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item>Home</ion-item>
-        <ion-item>Sports</ion-item>
-        <ion-item>
+        <ion-item (click)="home()">Home</ion-item>
+        <ion-item (click)="sportMode()">Sport Mode</ion-item>
+        <ion-item (click)="settings()">
           <ion-icon color="primary" name="settings" slot="start"></ion-icon>
           Settings
         </ion-item>

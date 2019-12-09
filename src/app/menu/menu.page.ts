@@ -36,9 +36,34 @@ export class MenuPage {
   openIntro() {
     this.storage.set('isIntroTurnOff', false).then(
       () => {
-        this.navCtrl.navigateForward('/intro');
+        this.closeMenu();
+        this.navCtrl.navigateRoot('/intro');
       }
     );
+  }
+
+
+  settings() {
+    this.navCtrl.navigateRoot('menu/settings').then(
+      () => {
+        this.closeMenu();
+      }
+    );
+  }
+
+
+  home() {
+    this.navCtrl.navigateRoot('menu/home').then(
+      () => {
+        this.closeMenu();
+      }
+    );
+  }
+
+
+  sport() {
+    this.closeMenu();
+    this.navCtrl.navigateRoot('menu/sport');
   }
 
 }

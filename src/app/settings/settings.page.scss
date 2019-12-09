@@ -1,0 +1,28 @@
+ion-avatar {
+    border: #ffffff solid 2px;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100px;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 16px;
+    margin-bottom: 32px;
+    margin-top: 0;
+}
+
+.row-header {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.success-background {
+    background-color: var(--ion-color-primary);
+    color: #ffffff;
+    padding: 32px;
+}
