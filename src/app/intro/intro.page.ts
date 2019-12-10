@@ -13,6 +13,7 @@ import {
   slidesCube,
   slidesFlip
 } from './slides-animations';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class IntroPage {
   slides: any;
   slideOpts: any;
 
-  constructor(private router: Router, private storage: Storage) {
+  constructor(private router: Router, private storage: Storage, private navCtrl: NavController) {
     // this.slideOpts = slidesCoverflow;
     // this.slideOpts = slidesFlip;
     this.slideOpts = slidesCube;
@@ -60,7 +61,7 @@ export class IntroPage {
   closeIntro() {
     this.storage.set('isIntroTurnOff', true).then(
       () => {
-        this.router.navigateByUrl('/menu/home');
+        this.navCtrl.navigateBack('menu');
       }
     );
   }

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
   DomSanitizer,
   SafeResourceUrl
 } from '@angular/platform-browser';
 
+import { NavController } from '@ionic/angular';
+
 import {
   CameraResultType,
   CameraSource,
   Plugins
 } from '@capacitor/core';
+
 
 
 @Component({
@@ -25,8 +28,16 @@ export class SettingsPage {
   picture: SafeResourceUrl;
 
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(
+    private sanitizer: DomSanitizer,
+    private navCtrl: NavController
+  ) {
     this.defaultPicture = 'assets/img/default-picture.jpg';
+  }
+
+
+  close() {
+    this.navCtrl.navigateBack('menu');
   }
 
 

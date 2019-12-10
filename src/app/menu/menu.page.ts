@@ -37,14 +37,14 @@ export class MenuPage {
     this.storage.set('isIntroTurnOff', false).then(
       () => {
         this.closeMenu();
-        this.navCtrl.navigateRoot('/intro');
+        this.navCtrl.navigateForward('/intro');
       }
     );
   }
 
 
   settings() {
-    this.navCtrl.navigateRoot('menu/settings').then(
+    this.navCtrl.navigateForward('menu/settings').then(
       () => {
         this.closeMenu();
       }
@@ -61,9 +61,9 @@ export class MenuPage {
   }
 
 
-  sport() {
+  sportMode() {
     this.closeMenu();
-    this.navCtrl.navigateRoot('menu/sport');
+    this.navCtrl.navigateForward('menu/sport');
   }
 
 }
