@@ -7,5 +7,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content>  
+  <ng-container *ngIf="locationsHistory.length!==0">
+
+    <agm-map
+      [latitude]="locationsHistory[lastLocation].lat"
+      [longitude]="locationsHistory[lastLocation].lng"
+      [zoom]='defaultZoom'
+    >
+      <agm-marker
+        [latitude]="locationsHistory[lastLocation].lat"
+        [longitude]="locationsHistory[lastLocation].lng"
+        iconUrl="assets/img/bicycle.png"
+      >
+      </agm-marker>
+      <agm-polyline [strokeColor]="'red'">
+        <agm-polyline-point
+          *ngFor="let point of locationsHistory"
+          [latitude]="point.lat"
+          [longitude]="point.lng"
+        >
+        </agm-polyline-point>
+      </agm-polyline>
+    </agm-map>
+
+    <div>
+      <h2>Last Location:</h2>
+      <p>latitude: {{ locationsHistory[lastLocation].lat }}</p>
+      <p>longitude: {{ locationsHistory[lastLocation].lng }}</p>
+      <p>Time: {{ locationsHistory[lastLocation].timestamp | date:'medium' }}</p>
+    </div>
+    
+    <h2>Locations History:</h2>
+    <div *ngFor="let location of locationsHistory">
+      <small>latitude: {{ location.lat }}</small>
+      <br>
+      <small>longitude: {{ location.lng }}</small>
+      <br>
+      <small>Time: {{ location.timestamp | date:'medium' }}</small>
+      <hr>
+    </div>
+
+  </ng-container>  
 </ion-content>

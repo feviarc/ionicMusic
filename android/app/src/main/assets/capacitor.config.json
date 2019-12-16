@@ -1,4 +1,5 @@
 {
+  "linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
   "appId": "io.ionic.starter",
   "appName": "ionic-music",
   "bundledWebRuntime": false,
