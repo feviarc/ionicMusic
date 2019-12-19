@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>  
-  <ng-container *ngIf="locationsHistory.length!==0">
+  <div *ngIf="locationsHistory.length!==0">
 
     <agm-map
       [latitude]="locationsHistory[lastLocation].lat"
@@ -48,5 +48,5 @@
       <hr>
     </div>
 
-  </ng-container>  
+  </div>  
 </ion-content>
