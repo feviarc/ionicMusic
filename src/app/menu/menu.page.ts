@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
+import { AlertController, MenuController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -13,6 +13,7 @@ import { Storage } from '@ionic/storage';
 export class MenuPage {
 
   constructor(
+    private alertCotroller: AlertController,
     private menuCtrl: MenuController,
     private navCtrl: NavController,
     private storage: Storage
@@ -25,9 +26,30 @@ export class MenuPage {
 
 
   logout() {
-    this.storage.set('isUserLoggedIn', false).then(
-      () => {
-        this.navCtrl.navigateRoot('/login');
+    this.alertCotroller.create(
+      {
+        header: 'Ionic Music',
+        message: 'Do you really want to log out?',
+        buttons: [
+          {
+            text: 'YES',
+            handler: () => {
+              this.storage.set('isUserLoggedIn', false).then(
+                () => {
+                  this.navCtrl.navigateRoot('/login');
+                }
+              );
+            }
+          },
+          {
+            text: 'NO',
+          }
+        ]
+      }
+    )
+    .then(
+      (alert) => {
+        alert.present();
       }
     );
   }

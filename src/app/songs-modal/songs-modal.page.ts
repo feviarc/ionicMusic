@@ -23,20 +23,29 @@ export class SongsModalPage {
     private musicService: MusicService
   ) {
     this.songs = {};
+    this.artistName = this.navParams.data.artistName;
+    this.artistId = this.navParams.data.artistId;
   }
 
 
-  async ionViewDidEnter() {
-    this.artistName = this.navParams.data.artistName;
-    this.artistId = this.navParams.data.artistId;
+  ionViewDidEnter() {
 
-    this.songs = await this.musicService.getArtistTopTracks(this.artistId);
+    this.musicService.getArtistTopTracks(this.artistId)
+    .then(
+      (responseData) => {
+        this.songs = responseData;
+      }
+    )
+    .catch(
+      (responseError) => {
+        console.log('[[[ responseError ]]]', responseError);
+      }
+    );
   }
 
 
   async selectSong(song) {
     await this.modalController.dismiss(song);
   }
-
 
 }

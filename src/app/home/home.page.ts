@@ -91,7 +91,8 @@ export class HomePage {
       }
     });
 
-    modal.onDidDismiss().then(
+    modal.onDidDismiss()
+    .then(
       (selectedSong) => {
         if (selectedSong.data) {
           this.song = selectedSong.data;

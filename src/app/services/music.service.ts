@@ -17,23 +17,16 @@ export class MusicService {
   }
 
 
-  getArtistTopTracks(artistId) {
-    console.log(artistId);
-    return fetch(`https://platzi-music-api.now.sh/artists/${artistId}/top-tracks?country=MX`)
-    .then(
-      (response) => {
-        return response.json();
-      }
-    );
+  async getArtistTopTracks(artistId: any) {
+    console.log('MusicService.getArtistTopTracks(' + artistId + ')');
+    const response = await fetch(`https://platzi-music-api.now.sh/artists/${artistId}/top-tracks?country=MX`);
+    return response.json();
   }
 
 
-  getNewReleases() {
-    return fetch('https://platzi-music-api.now.sh/browse/new-releases').then(
-      (response) => {
-        return response.json();
-      }
-    );
+  async getNewReleases() {
+    const response = await fetch('https://platzi-music-api.now.sh/browse/new-releases');
+    return response.json();
   }
 
 }
